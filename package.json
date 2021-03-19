@@ -1,5 +1,5 @@
 {
-  "name": "vue-lazyload",
+  "name": "@axharus/vue-lazyload",
   "version": "1.3.4",
   "description": "Vue module for lazy-loading images in your vue.js applications.",
   "main": "vue-lazyload.js",

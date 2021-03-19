@@ -28,7 +28,7 @@ const DEFAULT_OBSERVER_OPTIONS = {
 
 export default function Lazy (Vue) {
   return class Lazy {
-    constructor ({ preLoad, error, throttleWait, preLoadTop, dispatchEvent, loading, attempt, silent = true, scale, listenEvents, hasbind, filter, adapter, observer, observerOptions }) {
+    constructor ({ preLoad, error, throttleWait, preLoadTop, dispatchEvent, loading, attempt, silent = true, scale, checkWebp, listenEvents, hasbind, filter, adapter, observer, observerOptions }) {
       this.version = '__VUE_LAZYLOAD_VERSION__'
       this.mode = modeType.event
       this.ListenerQueue = []
@@ -46,7 +46,7 @@ export default function Lazy (Vue) {
         scale: scale || getDPR(scale),
         ListenEvents: listenEvents || DEFAULT_EVENTS,
         hasbind: false,
-        supportWebp: supportWebp(),
+        supportWebp: checkWebp || supportWebp(),
         filter: filter || {},
         adapter: adapter || {},
         observer: !!observer,

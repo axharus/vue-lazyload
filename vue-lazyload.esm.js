@@ -13,14 +13,14 @@
 
 // see http://jsperf.com/testing-value-is-primitive/7
 
-var isPrimitive = function isPrimitive(value) {
+var isPrimitive$1 = function isPrimitive(value) {
   return value == null || typeof value !== 'function' && typeof value !== 'object';
 };
 
-var isPrimitive$1 = /*#__PURE__*/Object.freeze({
+var isPrimitive$2 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': isPrimitive,
-  __moduleExports: isPrimitive
+  'default': isPrimitive$1,
+  __moduleExports: isPrimitive$1
 });
 
 /*!
@@ -30,7 +30,7 @@ var isPrimitive$1 = /*#__PURE__*/Object.freeze({
  * Licensed under the MIT License.
  */
 
-var assignSymbols = function (receiver, objects) {
+var assignSymbols$1 = function (receiver, objects) {
   if (receiver === null || typeof receiver === 'undefined') {
     throw new TypeError('expected first argument to be an object.');
   }
@@ -63,10 +63,10 @@ var assignSymbols = function (receiver, objects) {
   return target;
 };
 
-var assignSymbols$1 = /*#__PURE__*/Object.freeze({
+var assignSymbols$2 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': assignSymbols,
-  __moduleExports: assignSymbols
+  'default': assignSymbols$1,
+  __moduleExports: assignSymbols$1
 });
 
 var toString = Object.prototype.toString;
@@ -221,9 +221,9 @@ var kindOf$1 = /*#__PURE__*/Object.freeze({
   __moduleExports: kindOf
 });
 
-var isPrimitive$2 = ( isPrimitive$1 && isPrimitive ) || isPrimitive$1;
+var isPrimitive = ( isPrimitive$2 && isPrimitive$1 ) || isPrimitive$2;
 
-var assignSymbols$2 = ( assignSymbols$1 && assignSymbols ) || assignSymbols$1;
+var assignSymbols = ( assignSymbols$2 && assignSymbols$1 ) || assignSymbols$2;
 
 var typeOf = ( kindOf$1 && kindOf ) || kindOf$1;
 
@@ -236,10 +236,10 @@ function assign(target /*, objects*/) {
   }
   while (++i < len) {
     var val = arguments[i];
-    if (isPrimitive$2(target)) {
+    if (isPrimitive(target)) {
       target = val;
     }
-    if (isObject(val)) {
+    if (isObject$1(val)) {
       extend(target, val);
     }
   }
@@ -251,12 +251,12 @@ function assign(target /*, objects*/) {
  */
 
 function extend(target, obj) {
-  assignSymbols$2(target, obj);
+  assignSymbols(target, obj);
 
   for (var key in obj) {
     if (isValidKey(key) && hasOwn(obj, key)) {
       var val = obj[key];
-      if (isObject(val)) {
+      if (isObject$1(val)) {
         if (typeOf(target[key]) === 'undefined' && typeOf(val) === 'function') {
           target[key] = val;
         }
@@ -273,7 +273,7 @@ function extend(target, obj) {
  * Returns true if the object is a plain object or a function.
  */
 
-function isObject(obj) {
+function isObject$1(obj) {
   return typeOf(obj) === 'object' || typeOf(obj) === 'function';
 }
 
@@ -571,7 +571,7 @@ const scrollParent = el => {
   return window;
 };
 
-function isObject$1(obj) {
+function isObject(obj) {
   return obj !== null && typeof obj === 'object';
 }
 
@@ -1270,7 +1270,7 @@ function Lazy(Vue) {
       let error = this.options.error;
 
       // value is object
-      if (isObject$1(value)) {
+      if (isObject(value)) {
         if (!value.src && !this.options.silent) console.error('Vue Lazyload warning: miss src with ' + value);
         src = value.src;
         loading = value.loading || this.options.loading;
